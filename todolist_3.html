@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tolist</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div>
+        <input v-model="inputValue"/>
+        <button @click="handleClick">提交</button>
+    </div>
+    <ul>
+        <todoitem></todoitem>
+    </ul>
+</div>
+
+<script>
+    //局部组件
+    var todoitem={
+        template:'<li>item</li>'
+    }
+
+    var root = new Vue({
+        el:"#root",
+        components:{
+            'todoitem':todoitem
+        },
+        data:{
+            inputValue:'',
+            list:[]
+        },
+        methods:{
+            handleClick: function () {
+                this.list.push(this.inputValue)
+                this.inputValue=''
+            }
+        }
+    })
+</script>
+</body>
+</html>

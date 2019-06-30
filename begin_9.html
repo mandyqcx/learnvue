@@ -1,0 +1,33 @@
+<!--计算属性-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性与监听器</title>
+    <script src="./vue.js"></script>
+</head>
+    <div id="root">
+        姓：<input v-model="firstName"/>
+        名：<input v-model="lastName"/>
+        <div>{{fullName}}</div>
+    </div>
+
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                firstName:"",
+                lastName:""
+            },
+            computed:{
+                fullName: function () {
+                    return this.firstName+' '+this.lastName
+
+                }
+            }
+        })
+    </script>
+<body>
+
+</body>
+</html>

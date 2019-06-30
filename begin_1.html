@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!--挂载点-->
+    <!--{{}}中间叫做插值表达式-->
+    <div id="root">{{msg}}</div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                msg:"hello world"
+            }
+        })
+    </script>
+</body>
+</html>

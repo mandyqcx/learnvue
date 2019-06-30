@@ -1,0 +1,23 @@
+<!--模板1:模板可以卸载挂载点内-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--模板-->
+        <h1>HELLO {{msg}}</h1></div>
+
+<script>
+    var root = new Vue({
+        el:"#root",
+        data:{
+            msg:"hello world"
+        }
+    })
+</script>
+</body>
+</html>

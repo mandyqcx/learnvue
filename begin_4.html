@@ -1,0 +1,26 @@
+<!--插值表达式的另外一种写法-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div v-text="msg"></div>
+    <div v-html="msg"></div>
+    <div v-text="content"></div>
+</div>
+
+<script>
+    var root = new Vue({
+        el:"#root",
+        data:{
+            msg:"<h1>hello</h1>",
+            content:"world"
+        }
+    })
+</script>
+</body>
+</html>
