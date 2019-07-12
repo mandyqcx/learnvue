@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>Original msg:"{{fullName}}"</p>
+    </div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                firstName:'Foo',
+                lastName:'Bar'
+            },
+            //计算属性默认只有getter,但是在需要的时候可以提供一个setter
+            computed:{
+               fullName:{
+                   //getter
+                   get: function () {
+                       return this.firstName + ' ' + this.lastName
+                   },
+                   //setter
+                   set: function(newValue) {
+                       var names=newValue.split(' ')
+                       this.firstName=names[0]
+                       this.lastName=names[names.length-1]
+                   }
+               }
+            }
+        })
+    </script>
+</body>
+</html>

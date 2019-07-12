@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>Original msg:"{{msg}}"</p>
+        <p>Computed reversed msg:"{{reversemsg()}}"</p>
+    </div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                msg:"Hello"
+            },
+            //定义成一个方法，没有缓存，调用方法将总会再次执行函数
+            methods:{
+                reversemsg:function () {
+                    return this.msg.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

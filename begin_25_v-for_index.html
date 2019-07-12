@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!--v-for可以访问所有父作用域的属性，V-for还支持一个可选的第二个参数，即当前项的索引-->
+    <!--可以用of替代in-->
+    <div id="root">
+        <li v-for="(item,index) in items">{{parentMessage}}-{{index}}-{{item.msg}}</li>
+    </div>
+
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                parentMessage: 'Parent',
+                items:[
+                    {msg: 'Foo'},
+                    {msg: 'Bar'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

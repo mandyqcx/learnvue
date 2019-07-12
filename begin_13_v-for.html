@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!--<ol>表示有序，<ul>表示无序-->
+    <div id="root">
+        <ol>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ol>
+    </div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                msg:"hello world",
+                todos:[
+                    {text:'学习Javascript'},
+                    {text:'学习vue'},
+                    {text:'整个项目'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

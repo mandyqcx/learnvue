@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">{{msg}}
+        <ol>
+        <todo-item v-for="item in grocerylist"
+                   v-bind:todo="item"
+                   v-bind:key="item.id">
+        </todo-item>
+    </ol>
+    </div>
+
+    <!--实例-->
+    <script>
+
+        Vue.component('todo-item',
+            {props:['todo'],
+                template:'<li>{{todo.text}}</li>'})
+
+        var root = new Vue({
+            el:"#root",
+            data:{
+                msg:"hello world",
+                grocerylist:[
+                    {id:0,text:"蔬菜"},
+                    {id:1,text:"奶酪"},
+                    {id:2,text:"随便"}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

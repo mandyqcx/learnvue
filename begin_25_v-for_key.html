@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+<!--如果数据项的顺序被改变，Vue不会移动DOM元素来改变数据项的顺序，而是就地更新每个元素，确保在每个索引位置渲染-->
+<!--可为每项提供一个唯一的key属性，重用和重新排序现有元素,
+不要使用对象或者数组之类的非基本类型值作为v-for的Key，请用字符串或数值类型的值-->
+<div id="root">
+    <li v-for="item in items" v-bind:key="item.id">{{item.msg}}</li>
+</div>
+
+<!--实例-->
+<script>
+    var root = new Vue({
+        el:"#root",
+        data:{
+            items:[
+                {msg: 'Foo'},
+                {msg: 'Bar'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>
+
+
+

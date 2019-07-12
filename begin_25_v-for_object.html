@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!--v-for把数组对应为一组元素-->
+    <div id="root">
+        <li v-for="value in object">{{value}}</li>
+        <li v-for="(value, name) in object">{{name}} : {{value}}</li>
+        <li v-for="(value,name,index) in object">{{index}}. {{name}} : {{value}}</li>
+    </div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                object:{
+                    title: 'how to do lists in vue',
+                    author: 'Mandy Qiu',
+                    publishedAt: '2019-07-12'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

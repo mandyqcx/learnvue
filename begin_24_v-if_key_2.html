@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--输入框不可复用-->
+        <template v-if="loginType">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+        </template>
+        <template v-else>
+            <lable>Email</lable>
+            <input placeholder="Enter you email address" key="email-input">
+        </template>
+        <p><button @click="toggleLoginType">Toggle login type</button></p>
+    </div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                loginType:true
+            },
+            methods:{
+                toggleLoginType:function(){
+                    this.loginType=!this.loginType
+                }
+            }
+        })
+    </script>
+</body>
+</html>

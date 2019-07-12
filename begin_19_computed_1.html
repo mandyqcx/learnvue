@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>Original msg:"{{msg}}"</p>
+        <p>Computed reversed msg:"{{reversemsg}}"</p>
+        <p>{{now}}</p>
+    </div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                msg:"Hello"
+            },
+            //定义成一个计算属性，基于响应式依赖进行缓存，只要msg没有改变，则访问计算属性会立即返回
+            //之前的计算结果，不必再次执行函数
+            computed:{
+                reversemsg:function () {
+                    return this.msg.split('').reverse().join('')
+                },
+                now:function () {
+                    return Date.now()
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

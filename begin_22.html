@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">{{msg}}
+    <p>Ask a yes/no question:
+    <input v-model="question"></p>
+    <p>{{answer}}</p></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                question:'',
+                answer:'I can not give you a answer until you ask a question'
+            },
+            //使用watch选项允许执行一个异步操作（访问一个API),限制我们执行该操作的频率，并在我们得到最终结果之前，设备中间状态
+            //这些是计算属性不能做到的
+            watch:{
+                question: function (newQuestion,oldQuestion) {
+                    this.answer='waiting for you to stop typing'
+                    this.debouncedGetAnswer()
+                }
+            },
+            created:function () {
+                this.debouncedGetAnswer=_.debounce(this.getAnswer,500)
+            },
+            methods:{
+                getAnswer:function () {
+                    if (this.question.indexOf('?')===-1) {
+                        this.answer='Question usually contain a question mark.;-)'
+                        return
+                    }
+                    this.answer='Thinking...'
+                    var vm = this
+                    axios.get('https://yesno.wtf/api')
+                        .then(function(response) {
+                            vm.answer= _.capitalize(response.data.answer)
+                        })
+                        .catch(function (error) {
+                            vm.answer='Error! Could not reach the API.'+error
+                        })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

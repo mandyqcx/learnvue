@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <!--v-once表示一次性插值，在控制台上修改属性的值，不会改变-->
+    <div id="root">
+        <span v-once>{{msg}}</span></div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                msg:"hello world"
+            }
+        })
+    </script>
+</body>
+</html>

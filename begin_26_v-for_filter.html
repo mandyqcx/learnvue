@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <li v-for="n in evenNumbers">{{n}}</li>
+        <!--当计算属性不适用的情况下，可以使用方法-->
+        <li v-for="n in even(numbers)">{{n}}</li>
+        <!--v-for 也可以接受整数，在这种情况下，它会把模板重复对应次数-->
+        <span v-for="n in 10">{{n}}</span>
+    </div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                numbers:[1,2,3,4,5,6,7,8]
+            },
+            computed: {
+                evenNumbers: function() {
+                    return this.numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            },
+            methods: {
+                even: function (numbers) {
+                    return numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

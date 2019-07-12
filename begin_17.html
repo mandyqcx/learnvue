@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>{{obj}}</p>
+    <button v-on:click="foo='baz'">Change it</button></div>
+
+    <!--实例-->
+    <script>
+        var obj={
+            foo:'bar'
+        }
+
+        //使用这个属性，就不能在控制台上修改属性的值
+        Object.freeze(obj)
+
+        var root = new Vue({
+            el:"#root",
+            data:{
+                obj
+            }
+        })
+    </script>
+</body>
+</html>
