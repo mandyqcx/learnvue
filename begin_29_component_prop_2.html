@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="blog-post-demo">
+        <!--每使用一个组件，则会有一个新实例被创建-->
+        <blog-post v-for="post in posts"
+                   v-bind:key="post.id"
+                   v-bind:title="post.title">
+        </blog-post>
+
+    </div>
+
+    <!--实例-->
+    <script>
+        //组件要写在根实例的前面，否则定义不成功
+        Vue.component('blog-post',
+            {props:['title'],
+                template: '<h3>{{title}}</h3>'
+            })
+
+        new Vue({
+            el:'#blog-post-demo',
+            data:{
+                posts:[
+                    {id:1,title:'My journey with vue'},
+                    {id:2,title:'Blogging with Vue'},
+                    {id:3,title:'Why vue is so fun'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

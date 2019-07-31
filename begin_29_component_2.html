@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="components-demo">
+        <!--每使用一个组件，则会有一个新实例被创建-->
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+
+    <!--实例-->
+    <script>
+        //组件要写在根实例的前面，否则定义不成功
+        //全局注册
+        Vue.component('button-counter',
+            //组件中data必须是一个函数。因此每个实例可以独自维护它自己
+            {data:function () {
+                    return {
+                        count: 0
+                    }
+                },
+                template: '<button v-on:click="count++">You clicked me {{count}} times.</button>'
+            })
+
+        new Vue({
+            el:'#components-demo'
+        })
+    </script>
+</body>
+</html>

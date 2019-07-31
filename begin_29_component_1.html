@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="components-demo">
+        <button-counter></button-counter>
+    </div>
+
+    <!--实例-->
+    <script>
+        //局部注册组件
+        var ButtonCounter= {
+            data:function () {
+                    return {
+                        count: 0
+                    }
+                },
+                template: '<button v-on:click="count++">You clicked me {{count}} times.</button>'
+            }
+
+        new Vue({
+            el:'#components-demo',
+            components:{
+                'button-counter': ButtonCounter
+            }
+        })
+    </script>
+</body>
+</html>

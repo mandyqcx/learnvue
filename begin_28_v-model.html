@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue入门</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--文本-->
+        <input v-model="message" placeholder="edit me">
+        <p>Message is: {{message}}</p>
+
+        <!--多行文本-->
+        <span>Multiline message is</span>
+        <p style="white-space: pre-line;">{{message}}</p>
+        <br>
+        <!--在文本区域插值(<textarea>{{text}}</textarea>并不会生效，应用v-model来代替-->
+        <textarea v-model="message" placeholder="add multiple lines"></textarea>
+
+        <!--复选框-->
+        <br>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+
+        <!--单选按钮-->
+        <br>
+        <input type="radio" id="one" value="one" v-model="picked">
+        <label for="one">one</label>
+
+        <!--选择框,单选-->
+        <br>
+        <select v-model="selected">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>selected:{{selected}}</span>
+
+        <!--选择框，多选-->
+        <p>
+        <select v-model="selected_mult" multiple style="width: 50px;">
+            <option disabled value="">请选择</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>selected_mult:{{selected_mult}}</span></p>
+
+        <!--用v-for渲染动态选项-->
+        <select v-model="selected_for">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{option.text}}
+            </option>
+        </select>
+        <span>selected_for:{{selected_for}}</span>
+    </div>
+
+    <!--实例-->
+    <script>
+        var root = new Vue({
+            el:"#root",
+            data:{
+                message:"hello world",
+                checked: "",
+                selected:"",
+                selected_mult:[],
+                selected_for:'',
+                options:[
+                    {text:'one',value:'A'},
+                    {text:'two',value:'B'},
+                    {text:'three',value:'C'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
